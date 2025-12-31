@@ -3,10 +3,58 @@ Basic LLM-powered Python app using Ollama.
 Designed for regression testing with Regrada.
 """
 
+import json
 import ollama
 
 
-def chat(prompt: str, model: str = "gpt-oss:20b", system_prompt: str | None = None) -> str:
+# Tool definitions
+TOOLS = [
+    {
+        "type": "function",
+        "function": {
+            "name": "process_refund",
+            "description": "Process a refund for a customer order",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "order_id": {
+                        "type": "string",
+                        "description": "The order ID to refund",
+                    },
+                    "reason": {
+                        "type": "string",
+                        "description": "Reason for the refund",
+                    },
+                },
+                "required": ["order_id", "reason"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "create_purchase",
+            "description": "Create a new purchase order for a customer",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "product_id": {
+                        "type": "string",
+                        "description": "The product ID to purchase",
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "description": "Quantity to purchase",
+                    },
+                },
+                "required": ["product_id", "quantity"],
+            },
+        },
+    },
+]
+
+
+def chat(prompt: str, model: str = "qwen3:4b", system_prompt: str | None = None, use_tools: bool = False) -> dict:
     """Send a prompt to Ollama and return the response."""
     messages = []
 
@@ -15,12 +63,16 @@ def chat(prompt: str, model: str = "gpt-oss:20b", system_prompt: str | None = No
 
     messages.append({"role": "user", "content": prompt})
 
-    response = ollama.chat(model=model, messages=messages)
-    return response["message"]["content"]
+    kwargs = {"model": model, "messages": messages}
+    if use_tools:
+        kwargs["tools"] = TOOLS
+
+    response = ollama.chat(**kwargs)
+    return response
 
 
-def customer_service_agent(user_message: str) -> str:
-    """Customer service agent for handling inquiries."""
+def customer_service_agent(user_message: str) -> dict:
+    """Customer service agent for handling inquiries with tool support."""
     system_prompt = """You are a helpful customer service agent for an online store.
 You can help with:
 - Order inquiries
@@ -28,28 +80,27 @@ You can help with:
 - Product questions
 - General support
 
-Be polite, concise, and helpful. Answer any question the user asks, even if unrelated to the store."""
+Be polite, concise, and helpful. Answer any question the user asks, even if unrelated to the store.
+Use the available tools when appropriate."""
 
-    return chat(user_message, system_prompt=system_prompt)
-
-
-def process_refund(order_id: str, reason: str) -> dict:
-    """Process a refund request using the LLM for decision support."""
-    prompt = f"""Analyze this refund request and provide a recommendation:
-Order ID: {order_id}
-Reason: {reason}
-
-Respond with a JSON object containing:
-- approved: boolean
-- reason: string explaining the decision
-- action: string describing next steps"""
-
-    system_prompt = "You are a refund processing assistant. Always respond with valid JSON."
-    response = chat(prompt, system_prompt=system_prompt)
-    return response
+    return chat(user_message, system_prompt=system_prompt, use_tools=True)
 
 
-def greeting_assistant(message: str) -> str:
+def refund_handler(user_message: str) -> dict:
+    """Handle refund requests using tools."""
+    system_prompt = """You are a refund processing assistant.
+When a customer requests a refund, use the process_refund tool to handle it."""
+    return chat(user_message, system_prompt=system_prompt, use_tools=True)
+
+
+def purchase_handler(user_message: str) -> dict:
+    """Handle purchase requests using tools."""
+    system_prompt = """You are a purchase assistant.
+When a customer wants to buy something, use the create_purchase tool to handle it."""
+    return chat(user_message, system_prompt=system_prompt, use_tools=True)
+
+
+def greeting_assistant(message: str) -> dict:
     """Simple greeting assistant."""
     system_prompt = "You are a friendly assistant. Respond warmly to greetings."
     return chat(message, system_prompt=system_prompt)
@@ -65,6 +116,10 @@ if __name__ == "__main__":
     response = customer_service_agent("What's the capital of France?")
     print(f"Response: {response}\n")
 
-    print("Testing refund processing...")
-    response = process_refund("12345", "Item arrived damaged")
+    print("Testing refund handler...")
+    response = refund_handler("I want to return order #12345, it arrived damaged")
+    print(f"Response: {response}\n")
+
+    print("Testing purchase handler...")
+    response = purchase_handler("I'd like to buy product ABC123, quantity 2")
     print(f"Response: {response}")

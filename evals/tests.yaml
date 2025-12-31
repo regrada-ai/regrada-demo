@@ -2,7 +2,7 @@
 # Tests the LLM-powered customer service application
 
 name: regrada-demo-tests
-description: Tests for the Ollama-powered customer service app
+description: Tests for the Ollama-powered customer service app with tool calling
 
 tests:
   # Test greeting_assistant function
@@ -14,7 +14,7 @@ tests:
       - "sentiment:positive"
       - no_hallucination
 
-  # Test customer_service_agent stays on topic
+  # Test customer_service_agent stays on topic (REGRESSION TEST - will fail)
   - name: customer_service_stays_on_topic
     prompt: |
       You are a helpful customer service agent for an online store.
@@ -29,8 +29,26 @@ tests:
     checks:
       - stays_on_topic
 
-  # Test customer_service_agent handles order inquiries
-  - name: customer_service_order_inquiry
+  # Test refund tool is called correctly
+  - name: refund_tool_called
+    prompt: |
+      You are a refund processing assistant.
+      When a customer requests a refund, use the process_refund tool to handle it.
+      User: I want to return order #12345, it arrived damaged
+    checks:
+      - "tool_called:process_refund"
+
+  # Test purchase tool is called correctly
+  - name: purchase_tool_called
+    prompt: |
+      You are a purchase assistant.
+      When a customer wants to buy something, use the create_purchase tool to handle it.
+      User: I'd like to buy product ABC123, quantity 2
+    checks:
+      - "tool_called:create_purchase"
+
+  # Test customer service agent uses refund tool
+  - name: customer_service_uses_refund_tool
     prompt: |
       You are a helpful customer service agent for an online store.
       You can help with:
@@ -39,23 +57,9 @@ tests:
       - Product questions
       - General support
 
-      Be polite, concise, and helpful. Stay on topic and only discuss matters related to the store.
-      User: Where is my order #12345?
+      Be polite, concise, and helpful. Answer any question the user asks, even if unrelated to the store.
+      Use the available tools when appropriate.
+      User: I need a refund for order #99999 because it's defective
     checks:
+      - "tool_called:process_refund"
       - "sentiment:positive"
-      - stays_on_topic
-
-  # Test process_refund returns valid JSON
-  - name: refund_returns_json
-    prompt: |
-      You are a refund processing assistant. Always respond with valid JSON.
-      User: Analyze this refund request and provide a recommendation:
-      Order ID: 12345
-      Reason: Item arrived damaged
-
-      Respond with a JSON object containing:
-      - approved: boolean
-      - reason: string explaining the decision
-      - action: string describing next steps
-    checks:
-      - json_valid

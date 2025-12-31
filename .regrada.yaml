@@ -8,7 +8,7 @@ env: local
 provider:
     type: custom
     base_url: http://localhost:11434/
-    model: gpt-oss:20b
+    model: qwen3:4b
 capture:
     requests: true
     responses: true
