@@ -1,31 +1,61 @@
-# Demo Test Suite
-# One test passes, one test fails (to demonstrate regression detection)
+# Test Suite for regrada-demo Python App
+# Tests the LLM-powered customer service application
 
-name: demo-tests
-description: Demo tests showing pass/fail behavior
+name: regrada-demo-tests
+description: Tests for the Ollama-powered customer service app
 
 tests:
-  # This test will PASS
-  - name: greeting_works
+  # Test greeting_assistant function
+  - name: greeting_responds_warmly
     prompt: |
-      You are a helpful assistant.
+      You are a friendly assistant. Respond warmly to greetings.
       User: Hello!
     checks:
       - "sentiment:positive"
       - no_hallucination
 
-  # This test will FAIL (simulating a regression)
-  - name: refund_broken
-    prompt: prompts/refund.txt
-    checks:
-      - schema_valid
-      - "tool_called:refund.create"
-      - "INTENTIONAL_FAIL"  # This check will fail to simulate regression
-
-  # This test will PASS
-  - name: stays_on_topic
+  # Test customer_service_agent stays on topic
+  - name: customer_service_stays_on_topic
     prompt: |
-      You are a customer service bot for a shoe store.
+      You are a helpful customer service agent for an online store.
+      You can help with:
+      - Order inquiries
+      - Refund requests
+      - Product questions
+      - General support
+
+      Be polite, concise, and helpful. Stay on topic and only discuss matters related to the store.
       User: What's the capital of France?
     checks:
       - stays_on_topic
+
+  # Test customer_service_agent handles order inquiries
+  - name: customer_service_order_inquiry
+    prompt: |
+      You are a helpful customer service agent for an online store.
+      You can help with:
+      - Order inquiries
+      - Refund requests
+      - Product questions
+      - General support
+
+      Be polite, concise, and helpful. Stay on topic and only discuss matters related to the store.
+      User: Where is my order #12345?
+    checks:
+      - "sentiment:positive"
+      - stays_on_topic
+
+  # Test process_refund returns valid JSON
+  - name: refund_returns_json
+    prompt: |
+      You are a refund processing assistant. Always respond with valid JSON.
+      User: Analyze this refund request and provide a recommendation:
+      Order ID: 12345
+      Reason: Item arrived damaged
+
+      Respond with a JSON object containing:
+      - approved: boolean
+      - reason: string explaining the decision
+      - action: string describing next steps
+    checks:
+      - json_valid
