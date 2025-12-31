@@ -1,0 +1,16 @@
+{
+  "id": "1767150999435813000",
+  "start_time": "2025-12-31T00:16:39.435814-03:00",
+  "end_time": "2025-12-31T00:17:05.259441-03:00",
+  "command": "python app.py",
+  "traces": [],
+  "summary": {
+    "total_calls": 0,
+    "total_tokens_in": 0,
+    "total_tokens_out": 0,
+    "total_latency_ms": 0,
+    "by_provider": {},
+    "by_model": {},
+    "tools_called": []
+  }
+}

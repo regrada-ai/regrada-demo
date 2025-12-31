@@ -28,7 +28,7 @@ You can help with:
 - Product questions
 - General support
 
-Be polite, concise, and helpful. Stay on topic and only discuss matters related to the store."""
+Be polite, concise, and helpful. Answer any question the user asks, even if unrelated to the store."""
 
     return chat(user_message, system_prompt=system_prompt)
 
