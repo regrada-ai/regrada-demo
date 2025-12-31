@@ -20,7 +20,7 @@ tests:
     checks:
       - schema_valid
       - "tool_called:refund.create"
-      # - "INTENTIONAL_FAIL"  # This check will fail to simulate regression
+      - "INTENTIONAL_FAIL"  # This check will fail to simulate regression
 
   # This test will PASS
   - name: stays_on_topic

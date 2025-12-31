@@ -23,98 +23,13 @@ jobs:
         with:
           go-version: '1.21'
 
-      - name: Build Regrada
-        run: |
-          go build -o regrada .
-
-      - name: Run AI Tests
-        id: tests
-        run: |
-          ./regrada run --ci --output github
-        continue-on-error: true
-
-      - name: Comment on PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+      - name: Regrada
+        uses: matiasmolinolo/regrada@1.0.0
         with:
-          script: |
-            const fs = require('fs');
+          tests: 'evals/tests.yaml'           # Path to test file
+          baseline: '.regrada/baseline.json'   # Path to baseline
+          fail-on-regression: 'true'           # Fail CI on regression
+          fail-on-failure: 'false'             # Fail CI on any failure
+          comment-on-pr: 'true'                # Post PR comment
 
-            let body = '## 🤖 Regrada AI Test Results\n\n';
-
-            try {
-              const result = JSON.parse(fs.readFileSync('.regrada/results.json', 'utf8'));
-
-              const passRate = result.total_tests > 0
-                ? ((result.passed / result.total_tests) * 100).toFixed(1)
-                : 0;
-
-              let status = '✅';
-              if (result.regressions > 0) status = '🔴';
-              else if (result.failed > 0) status = '⚠️';
-
-              body = `## ${status} Regrada AI Test Results\n\n`;
-              body += `| Tests | Passed | Failed | Regressions |\n`;
-              body += `|-------|--------|--------|-------------|\n`;
-              body += `| ${result.total_tests} | ${result.passed} | ${result.failed} | ${result.regressions} |\n\n`;
-
-              if (result.regressions > 0 && result.comparison?.new_failures) {
-                body += `### 🔴 Regressions Detected\n\n`;
-                body += `These tests were passing but are now failing:\n\n`;
-                result.comparison.new_failures.forEach(name => {
-                  body += `- \`${name}\`\n`;
-                });
-                body += `\n`;
-              }
-
-              if (result.failed > 0) {
-                body += `<details><summary>Failed Tests Details</summary>\n\n`;
-                result.test_results
-                  .filter(t => t.status === 'failed')
-                  .forEach(t => {
-                    body += `**${t.name}**\n`;
-                    t.checks
-                      .filter(c => !c.passed)
-                      .forEach(c => {
-                        body += `- ${c.check}: ${c.message}\n`;
-                      });
-                    body += `\n`;
-                  });
-                body += `</details>\n`;
-              }
-
-            } catch (e) {
-              body += `Could not parse results. Check workflow logs.\n`;
-            }
-
-            body += `\n---\n*Powered by [Regrada](https://regrada.dev)*`;
-
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-            });
-
-            const existing = comments.find(c =>
-              c.user.type === 'Bot' && c.body.includes('Regrada AI Test Results')
-            );
-
-            if (existing) {
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: existing.id,
-                body: body
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.issue.number,
-                body: body
-              });
-            }
-
-      - name: Fail on regression
-        if: steps.tests.outcome == 'failure'
-        run: exit 1
+      
