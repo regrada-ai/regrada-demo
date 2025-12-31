@@ -1,0 +1,37 @@
+{
+  "timestamp": "2024-01-15T10:00:00Z",
+  "test_suite": "demo-tests",
+  "total_tests": 3,
+  "passed": 3,
+  "failed": 0,
+  "regressions": 0,
+  "test_results": [
+    {
+      "name": "greeting_works",
+      "status": "passed",
+      "duration_ms": 150,
+      "checks": [
+        {"check": "sentiment:positive", "passed": true, "message": "Sentiment is positive"},
+        {"check": "no_hallucination", "passed": true, "message": "No hallucinated content detected"}
+      ]
+    },
+    {
+      "name": "refund_broken",
+      "status": "passed",
+      "duration_ms": 200,
+      "checks": [
+        {"check": "schema_valid", "passed": true, "message": "Response matches expected schema"},
+        {"check": "tool_called:refund.create", "passed": true, "message": "Tool 'refund.create' was called"},
+        {"check": "INTENTIONAL_FAIL", "passed": true, "message": "Check passed"}
+      ]
+    },
+    {
+      "name": "stays_on_topic",
+      "status": "passed",
+      "duration_ms": 180,
+      "checks": [
+        {"check": "stays_on_topic", "passed": true, "message": "Response stays on topic"}
+      ]
+    }
+  ]
+}

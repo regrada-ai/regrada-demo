@@ -1,0 +1,33 @@
+# Regrada Configuration
+# CI for AI systems - detect behavioral regressions in LLM-powered apps
+
+version: "1"
+project: demo-ai-agent
+env: ci
+
+provider:
+  type: openai
+  model: gpt-4o
+
+capture:
+  requests: true
+  responses: true
+  traces: true
+  latency: true
+
+evals:
+  path: evals
+  types:
+    - semantic
+    - exact
+  timeout: 30s
+  concurrent: 5
+
+gate:
+  enabled: true
+  threshold: 0.8
+  fail_on: regression
+
+output:
+  format: text
+  verbose: false
