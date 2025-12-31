@@ -1,0 +1,31 @@
+# Demo Test Suite
+# One test passes, one test fails (to demonstrate regression detection)
+
+name: demo-tests
+description: Demo tests showing pass/fail behavior
+
+tests:
+  # This test will PASS
+  - name: greeting_works
+    prompt: |
+      You are a helpful assistant.
+      User: Hello!
+    checks:
+      - "sentiment:positive"
+      - no_hallucination
+
+  # This test will FAIL (simulating a regression)
+  - name: refund_broken
+    prompt: prompts/refund.txt
+    checks:
+      - schema_valid
+      - "tool_called:refund.create"
+      - "INTENTIONAL_FAIL"  # This check will fail to simulate regression
+
+  # This test will PASS
+  - name: stays_on_topic
+    prompt: |
+      You are a customer service bot for a shoe store.
+      User: What's the capital of France?
+    checks:
+      - stays_on_topic
