@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Regrada
-        uses: regrada-ai/regrada@1.0.1b2
+        uses: regrada-ai/regrada@1.1.0-beta.1
         with:
           tests: 'evals/tests.yaml'           # Path to test file
           baseline: '.regrada/baseline.json'   # Path to baseline

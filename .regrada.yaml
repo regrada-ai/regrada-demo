@@ -1,14 +1,10 @@
-# Regrada Configuration
-# CI for AI systems - detect behavioral regressions in LLM-powered apps
-# Documentation: https://regrada.dev/docs
-
 version: "1"
 project: regrada-demo
 env: local
 provider:
     type: custom
     base_url: http://localhost:11434/
-    model: qwen3:4b
+    model: qwen-3:4b
 capture:
     requests: true
     responses: true
@@ -19,7 +15,6 @@ evals:
     types:
         - semantic
         - exact
-        - llm-judge
     timeout: 30s
     concurrent: 5
 gate:
@@ -27,5 +22,5 @@ gate:
     threshold: 0.85
     fail_on: any-failure
 output:
-    format: github
-    verbose: false
+    format: json
+    verbose: true

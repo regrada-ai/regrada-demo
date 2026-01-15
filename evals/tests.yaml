@@ -1,65 +1,21 @@
-# Test Suite for regrada-demo Python App
-# Tests the LLM-powered customer service application
-
-name: regrada-demo-tests
-description: Tests for the Ollama-powered customer service app with tool calling
-
+name: Example Test Suite
+description: Run "regrada trace --save-baseline -- <your-command>" to auto-generate tests
 tests:
-  # Test greeting_assistant function
-  - name: greeting_responds_warmly
-    prompt: |
-      You are a friendly assistant. Respond warmly to greetings.
-      User: Hello!
-    checks:
-      - "sentiment:positive"
-      - no_hallucination
+    - name: trace_1_custom_chat
+      trace_index: 0
+      checks:
+        - contains: Hello
+    - name: trace_2_custom_chat
+      trace_index: 1
+      checks:
+        - exact: 4
+    - name: trace_3_custom_chat
+      trace_index: 2
+      checks:
+        - contains: hello
+    - name: trace_4_custom_chat
+      trace_index: 3
+      checks: 
+        - tool_called: get_weather
+        - tool_args_contains: {"city": "paris"}
 
-  # Test customer_service_agent stays on topic (REGRESSION TEST - will fail)
-  - name: customer_service_stays_on_topic
-    prompt: |
-      You are a helpful customer service agent for an online store.
-      You can help with:
-      - Order inquiries
-      - Refund requests
-      - Product questions
-      - General support
-
-      Be polite, concise, and helpful. Stay on topic and only discuss matters related to the store.
-      User: What's the capital of France?
-    checks:
-      - stays_on_topic
-
-  # Test refund tool is called correctly
-  - name: refund_tool_called
-    prompt: |
-      You are a refund processing assistant.
-      When a customer requests a refund, use the process_refund tool to handle it.
-      User: I want to return order #12345, it arrived damaged
-    checks:
-      - "tool_called:process_refund"
-
-  # Test purchase tool is called correctly
-  - name: purchase_tool_called
-    prompt: |
-      You are a purchase assistant.
-      When a customer wants to buy something, use the create_purchase tool to handle it.
-      User: I'd like to buy product ABC123, quantity 2
-    checks:
-      - "tool_called:create_purchase"
-
-  # Test customer service agent uses refund tool
-  - name: customer_service_uses_refund_tool
-    prompt: |
-      You are a helpful customer service agent for an online store.
-      You can help with:
-      - Order inquiries
-      - Refund requests
-      - Product questions
-      - General support
-
-      Be polite, concise, and helpful. Answer any question the user asks, even if unrelated to the store.
-      Use the available tools when appropriate.
-      User: I need a refund for order #99999 because it's defective
-    checks:
-      - "tool_called:process_refund"
-      - "sentiment:positive"

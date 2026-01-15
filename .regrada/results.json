@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-01-15T17:28:25.654196-03:00",
+  "test_suite": "Example Test Suite",
+  "total_tests": 4,
+  "passed": 3,
+  "failed": 1,
+  "regressions": 0,
+  "test_results": [
+    {
+      "name": "trace_1_custom_chat",
+      "status": "passed",
+      "duration_ms": 0,
+      "checks": [
+        {
+          "check": "contains: Hello",
+          "passed": true,
+          "message": "Response contains 'Hello'"
+        }
+      ]
+    },
+    {
+      "name": "trace_2_custom_chat",
+      "status": "passed",
+      "duration_ms": 0,
+      "checks": [
+        {
+          "check": "exact: 4",
+          "passed": true,
+          "message": "Response exactly matches expected text"
+        }
+      ]
+    },
+    {
+      "name": "trace_3_custom_chat",
+      "status": "passed",
+      "duration_ms": 0,
+      "checks": [
+        {
+          "check": "contains: hello",
+          "passed": true,
+          "message": "Response contains 'hello'"
+        }
+      ]
+    },
+    {
+      "name": "trace_4_custom_chat",
+      "status": "failed",
+      "duration_ms": 0,
+      "checks": [
+        {
+          "check": "tool_called: get_weather",
+          "passed": true,
+          "message": "Tool 'get_weather' was called"
+        },
+        {
+          "check": "tool_args_contains",
+          "passed": false,
+          "message": "Tool arguments do not match expected values"
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "baseline_date": "0001-01-01T00:00:00Z",
+    "added_tests": [
+      "trace_4_custom_chat",
+      "trace_1_custom_chat",
+      "trace_2_custom_chat",
+      "trace_3_custom_chat"
+    ]
+  }
+}
