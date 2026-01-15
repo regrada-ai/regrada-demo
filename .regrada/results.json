@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-15T17:28:25.654196-03:00",
+  "timestamp": "2026-01-15T17:44:50.885924-03:00",
   "test_suite": "Example Test Suite",
   "total_tests": 4,
-  "passed": 3,
-  "failed": 1,
+  "passed": 4,
+  "failed": 0,
   "regressions": 0,
   "test_results": [
     {
@@ -44,7 +44,7 @@
     },
     {
       "name": "trace_4_custom_chat",
-      "status": "failed",
+      "status": "passed",
       "duration_ms": 0,
       "checks": [
         {
@@ -54,8 +54,8 @@
         },
         {
           "check": "tool_args_contains",
-          "passed": false,
-          "message": "Tool arguments do not match expected values"
+          "passed": true,
+          "message": "Tool 'get_weather' arguments contain: city=tokyo"
         }
       ]
     }
@@ -63,10 +63,10 @@
   "comparison": {
     "baseline_date": "0001-01-01T00:00:00Z",
     "added_tests": [
-      "trace_4_custom_chat",
       "trace_1_custom_chat",
       "trace_2_custom_chat",
-      "trace_3_custom_chat"
+      "trace_3_custom_chat",
+      "trace_4_custom_chat"
     ]
   }
 }

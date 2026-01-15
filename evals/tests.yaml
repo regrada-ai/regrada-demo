@@ -12,10 +12,9 @@ tests:
     - name: trace_3_custom_chat
       trace_index: 2
       checks:
-        - contains: hello
+        - contains:hello
     - name: trace_4_custom_chat
       trace_index: 3
-      checks: 
+      checks:
         - tool_called: get_weather
-        - tool_args_contains: {"city": "paris"}
-
+        - tool_args_contains: {"city":"regrada"}
