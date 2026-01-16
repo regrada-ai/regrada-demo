@@ -135,7 +135,7 @@ if __name__ == "__main__":
     print(f"Response: {response}\n")
 
     print("Testing greeting assistant 2...")
-    response = greeting_assistant("What is 2+2? Just give me the number.")
+    response = greeting_assistant("What is 2+2? Just give me the number. No emojis, no fluff. Just the number.")
     print(f"Response: {response}\n")
 
     print("Testing greeting assistant 3...")

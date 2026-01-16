@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-15T17:44:50.885924-03:00",
+  "timestamp": "2026-01-15T23:45:35.081745-03:00",
   "test_suite": "Example Test Suite",
   "total_tests": 4,
   "passed": 4,
@@ -12,9 +12,19 @@
       "duration_ms": 0,
       "checks": [
         {
+          "check": "no_tool_called",
+          "passed": true,
+          "message": "No tools were called"
+        },
+        {
           "check": "contains: Hello",
           "passed": true,
           "message": "Response contains 'Hello'"
+        },
+        {
+          "check": "similarity: {\"method\":\"cosine\",\"text\":\"Hello! How can I assist you today?\",\"threshold\":0.7}",
+          "passed": true,
+          "message": "Cosine similarity 0.7127 meets threshold 0.7000"
         }
       ]
     },
@@ -36,9 +46,14 @@
       "duration_ms": 0,
       "checks": [
         {
-          "check": "contains: hello",
+          "check": "no_tool_called",
           "passed": true,
-          "message": "Response contains 'hello'"
+          "message": "No tools were called"
+        },
+        {
+          "check": "similarity: {\"method\":\"levenshtein\",\"text\":\"hello\",\"threshold\":50}",
+          "passed": true,
+          "message": "Levenshtein distance 33 within threshold 50"
         }
       ]
     },

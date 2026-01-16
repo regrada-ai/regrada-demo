@@ -2,9 +2,15 @@ name: Example Test Suite
 description: Run "regrada trace --save-baseline -- <your-command>" to auto-generate tests
 tests:
     - name: trace_1_custom_chat
+      description: Testing greeting assistant.
       trace_index: 0
       checks:
+        - no_tool_called
         - contains: Hello
+        - similarity:
+            method: cosine
+            text: "Hello! How can I assist you today?"
+            threshold: 0.7
     - name: trace_2_custom_chat
       trace_index: 1
       checks:
@@ -12,9 +18,14 @@ tests:
     - name: trace_3_custom_chat
       trace_index: 2
       checks:
-        - contains:hello
+        - no_tool_called
+        - similarity: 
+            method: levenshtein 
+            text: "hello"
+            threshold: 50
     - name: trace_4_custom_chat
       trace_index: 3
       checks:
         - tool_called: get_weather
-        - tool_args_contains: {"city":"regrada"}
+        - tool_args_contains:
+            city: regrada
