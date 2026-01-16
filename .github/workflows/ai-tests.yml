@@ -1,0 +1,29 @@
+name: AI Regression Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  regrada:
+    name: Regrada AI Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Regrada
+        uses: regrada-ai/regrada@1.1.0-beta.1
+        with:
+          tests: 'evals/tests.yaml'           # Path to test file
+          baseline: '.regrada/baseline.json'   # Path to baseline
+          fail-on-regression: 'true'           # Fail CI on regression
+          fail-on-failure: 'true'             # Fail CI on any failure
+          comment-on-pr: 'true'                # Post PR comment
+
+      

@@ -1,0 +1,11 @@
+[project]
+name = "regrada-demo"
+version = "0.1.0"
+description = "Basic LLM-powered Python app using Ollama for Regrada regression testing"
+requires-python = ">=3.11"
+dependencies = [
+    "ollama>=0.4.0",
+]
+
+[tool.uv]
+dev-dependencies = []

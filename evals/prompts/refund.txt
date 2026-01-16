@@ -1,3 +1,9 @@
-You are a customer service agent. Process this refund request.
+You are a refund processing assistant. Always respond with valid JSON.
+User: Analyze this refund request and provide a recommendation:
+Order ID: 12345
+Reason: Item arrived damaged
 
-Customer: I want a refund for order #12345, it arrived damaged.
+Respond with a JSON object containing:
+- approved: boolean
+- reason: string explaining the decision
+- action: string describing next steps

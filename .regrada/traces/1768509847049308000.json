@@ -1,0 +1,360 @@
+{
+  "id": "1768509847049308000",
+  "start_time": "2026-01-15T17:44:07.049309-03:00",
+  "end_time": "2026-01-15T17:44:41.717033-03:00",
+  "command": "python app.py",
+  "traces": [
+    {
+      "id": "1768509856186567000",
+      "timestamp": "2026-01-15T17:44:16.186592-03:00",
+      "provider": "custom",
+      "endpoint": "/api/chat",
+      "model": "qwen3:4b",
+      "request": {
+        "method": "POST",
+        "path": "/api/chat",
+        "headers": {
+          "Accept": "application/json",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "183",
+          "Content-Type": "application/json",
+          "User-Agent": "ollama-python/0.6.1 (arm64 darwin) Python/3.13.3"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "stream": false,
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a friendly assistant. Respond warmly to greetings."
+            },
+            {
+              "role": "user",
+              "content": "Hello!"
+            }
+          ],
+          "tools": []
+        }
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Length": "1211",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 15 Jan 2026 20:44:16 GMT"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "created_at": "2026-01-15T20:44:16.185874Z",
+          "message": {
+            "role": "assistant",
+            "content": "Hello! 😊 How can I help you today?",
+            "thinking": "Okay, the user said \"Hello!\" so I need to respond warmly. Let me think about how to phrase it. I should be friendly and enthusiastic.\n\nFirst, I'll start with a greeting that's warm. Maybe \"Hello! 😊\" to add a smiley. Then, I can ask how I can help them today to make it conversational and open-ended. That way, it's inviting and encourages them to share more.\n\nLet me check if there's anything else. The user might just be greeting, so no need for too much detail. Keep it simple and friendly. Let me write the response: \"Hello! 😊 How can I help you today?\"\n\nWait, is that too short? Hmm, but the user said \"Hello!\" so a quick, warm response is good. Maybe add a bit more warmth. Oh, but the instructions say to respond warmly to greetings, so this should be okay. Let me confirm. Yes, the response is friendly and open-ended. That should work.\n"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 8944090833,
+          "load_duration": 1785982958,
+          "prompt_eval_count": 28,
+          "prompt_eval_duration": 602351792,
+          "eval_count": 219,
+          "eval_duration": 6506781574
+        }
+      },
+      "latency_ms": 8946,
+      "tokens_in": 28,
+      "tokens_out": 219
+    },
+    {
+      "id": "1768509864582783000",
+      "timestamp": "2026-01-15T17:44:24.582794-03:00",
+      "provider": "custom",
+      "endpoint": "/api/chat",
+      "model": "qwen3:4b",
+      "request": {
+        "method": "POST",
+        "path": "/api/chat",
+        "headers": {
+          "Accept": "application/json",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "214",
+          "Content-Type": "application/json",
+          "User-Agent": "ollama-python/0.6.1 (arm64 darwin) Python/3.13.3"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "stream": false,
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a friendly assistant. Respond warmly to greetings."
+            },
+            {
+              "role": "user",
+              "content": "What is 2+2? Just give me the number."
+            }
+          ],
+          "tools": []
+        }
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Length": "1444",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 15 Jan 2026 20:44:24 GMT"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "created_at": "2026-01-15T20:44:24.581616Z",
+          "message": {
+            "role": "assistant",
+            "content": "4",
+            "thinking": "Okay, the user asked \"What is 2+2? Just give me the number.\" They want a straightforward answer without any extra fluff. \n\nHmm, this seems like a simple math question, but I should make sure I'm responding exactly as requested. The user specifically said \"just give me the number,\" so no explanations, no emojis, no extra words. \n\nLet me think... 2 plus 2 is definitely 4. That's basic arithmetic. I recall that in math, 2+2=4 is a fundamental equation. \n\nThe user might be testing if I follow instructions precisely, or maybe they're just being playful. But since they emphasized \"just give me the number,\" I'll stick to the minimum response. \n\nI wonder if they're a kid learning math, or someone checking if the AI is helpful. Either way, keeping it super simple matches their request. \n\n*Double-checking*: Yep, 2+2=4. No tricks here. \n\nAlright, response will be exactly \"4\" with no additional text. Strictly following their \"just give me the number\" instruction. \n\n...Though part of me wants to add \"😊\" to be friendly, but they said \"just the number,\" so I'll resist. Strict compliance mode activated.\n"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 8388141875,
+          "load_duration": 50505542,
+          "prompt_eval_count": 39,
+          "prompt_eval_duration": 96710958,
+          "eval_count": 267,
+          "eval_duration": 8192645834
+        }
+      },
+      "latency_ms": 8389,
+      "tokens_in": 39,
+      "tokens_out": 267
+    },
+    {
+      "id": "1768509873557802000",
+      "timestamp": "2026-01-15T17:44:33.557805-03:00",
+      "provider": "custom",
+      "endpoint": "/api/chat",
+      "model": "qwen3:4b",
+      "request": {
+        "method": "POST",
+        "path": "/api/chat",
+        "headers": {
+          "Accept": "application/json",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "186",
+          "Content-Type": "application/json",
+          "User-Agent": "ollama-python/0.6.1 (arm64 darwin) Python/3.13.3"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "stream": false,
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a friendly assistant. Respond warmly to greetings."
+            },
+            {
+              "role": "user",
+              "content": "Hi there!"
+            }
+          ],
+          "tools": []
+        }
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Length": "1660",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 15 Jan 2026 20:44:33 GMT"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "created_at": "2026-01-15T20:44:33.557626Z",
+          "message": {
+            "role": "assistant",
+            "content": "Hello! 👋 I'm here to help with anything you need - whether it's answering questions, solving problems, or just chatting! What would you like to do today? 😊",
+            "thinking": "Okay, the user said \"Hi there!\" - that's a friendly greeting. I should respond warmly and keep it simple. Let me think about how to make it welcoming.\n\nFirst, I'll acknowledge their greeting with a smiley to show warmth. Then I can offer help in a natural way without being too pushy. Maybe something like \"Hello! 👋 I'm here to help with anything you need - whether it's answering questions, solving problems, or just chatting!\" That sounds good because it's friendly, shows I'm available, and gives them options without pressure.\n\nI should keep it concise since they just said hello - no need to overdo it. The smiley adds that friendly touch they might expect. Let me check if this matches what they need... Yep, this response is warm, helpful, and appropriately short for a simple greeting. \n\nAlso, I'm making sure it's not too formal - they used \"Hi there!\" which is casual, so I'll match that energy. No need for complicated phrases. Just simple, warm, helpful.\n\nAlright, time to craft the response. I'll go with: \"Hello! 👋 I'm here to help with anything you need - whether it's answering questions, solving problems, or just chatting!\" That should work perfectly.\n"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 8971049792,
+          "load_duration": 48016875,
+          "prompt_eval_count": 29,
+          "prompt_eval_duration": 99146709,
+          "eval_count": 301,
+          "eval_duration": 8782702868
+        }
+      },
+      "latency_ms": 8971,
+      "tokens_in": 29,
+      "tokens_out": 301
+    },
+    {
+      "id": "1768509881669184000",
+      "timestamp": "2026-01-15T17:44:41.669186-03:00",
+      "provider": "custom",
+      "endpoint": "/api/chat",
+      "model": "qwen3:4b",
+      "request": {
+        "method": "POST",
+        "path": "/api/chat",
+        "headers": {
+          "Accept": "application/json",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "1122",
+          "Content-Type": "application/json",
+          "User-Agent": "ollama-python/0.6.1 (arm64 darwin) Python/3.13.3"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "stream": false,
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a weather assistant. You can get the weather for a given city."
+            },
+            {
+              "role": "user",
+              "content": "What's the weather in Tokyo?"
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "get_weather",
+                "description": "Get the weather for a given city",
+                "parameters": {
+                  "type": "object",
+                  "required": [
+                    "city"
+                  ],
+                  "properties": {
+                    "city": {
+                      "type": "string",
+                      "description": "The city to get the weather for"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "process_refund",
+                "description": "Process a refund for a customer order",
+                "parameters": {
+                  "type": "object",
+                  "required": [
+                    "order_id",
+                    "reason"
+                  ],
+                  "properties": {
+                    "order_id": {
+                      "type": "string",
+                      "description": "The order ID to refund"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "description": "Reason for the refund"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "create_purchase",
+                "description": "Create a new purchase order for a customer",
+                "parameters": {
+                  "type": "object",
+                  "required": [
+                    "product_id",
+                    "quantity"
+                  ],
+                  "properties": {
+                    "product_id": {
+                      "type": "string",
+                      "description": "The product ID to purchase"
+                    },
+                    "quantity": {
+                      "type": "integer",
+                      "description": "Quantity to purchase"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Length": "1471",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 15 Jan 2026 20:44:41 GMT"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "created_at": "2026-01-15T20:44:41.668985Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "Okay, the user is asking for the weather in Tokyo. Let me check the tools provided.\n\nLooking at the functions, there's a get_weather function that takes a city as a parameter. The other functions are for processing refunds and creating purchases, which aren't relevant here. So I need to call get_weather with the city set to Tokyo.\n\nWait, the function's parameters are specified as {\"city\": {\"type\": \"string\", \"description\": \"The city to get the weather for\"}}. So I should structure the tool call with city: \"Tokyo\".\n\nI don't need to use any other functions because the user is only asking about the weather. The other tools are for refunds and purchases, which aren't related. So the correct tool call is get_weather with arguments {\"city\": \"Tokyo\"}.\n\nLet me make sure the JSON is correctly formatted. The function name is get_weather, and the arguments should be a JSON object with the city key. Yep, that's right.\n\nNo other parameters are needed here. So the tool_call should be a JSON object inside the tool_call tags.\n",
+            "tool_calls": [
+              {
+                "id": "call_94wjwm5m",
+                "function": {
+                  "index": 0,
+                  "name": "get_weather",
+                  "arguments": {
+                    "city": "Tokyo"
+                  }
+                }
+              }
+            ]
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 8109014083,
+          "load_duration": 45893750,
+          "prompt_eval_count": 291,
+          "prompt_eval_duration": 771032542,
+          "eval_count": 246,
+          "eval_duration": 7246720540
+        }
+      },
+      "latency_ms": 8109,
+      "tool_calls": [
+        {
+          "id": "call_94wjwm5m",
+          "name": "get_weather",
+          "arguments": {
+            "city": "Tokyo"
+          }
+        }
+      ],
+      "tokens_in": 291,
+      "tokens_out": 246
+    }
+  ],
+  "summary": {
+    "total_calls": 4,
+    "total_tokens_in": 387,
+    "total_tokens_out": 1033,
+    "total_latency_ms": 34415,
+    "by_provider": {
+      "custom": 4
+    },
+    "by_model": {
+      "qwen3:4b": 4
+    },
+    "tools_called": [
+      "get_weather"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+version: "1"
+project: regrada-demo
+env: local
+provider:
+    type: custom
+    base_url: http://localhost:11434/
+    model: qwen-3:4b
+capture:
+    requests: true
+    responses: true
+    traces: true
+    latency: true
+evals:
+    path: evals
+    types:
+        - semantic
+        - exact
+    timeout: 30s
+    concurrent: 5
+gate:
+    enabled: true
+    threshold: 0.85
+    fail_on: any-failure
+output:
+    format: json
+    verbose: true

@@ -1,0 +1,207 @@
+{
+  "id": "1768507400301572000",
+  "start_time": "2026-01-15T17:03:20.301573-03:00",
+  "end_time": "2026-01-15T17:03:38.718858-03:00",
+  "command": "python app.py",
+  "traces": [
+    {
+      "id": "1768507404441521000",
+      "timestamp": "2026-01-15T17:03:24.441572-03:00",
+      "provider": "custom",
+      "endpoint": "/api/chat",
+      "model": "qwen3:4b",
+      "request": {
+        "method": "POST",
+        "path": "/api/chat",
+        "headers": {
+          "Accept": "application/json",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "183",
+          "Content-Type": "application/json",
+          "User-Agent": "ollama-python/0.6.1 (arm64 darwin) Python/3.13.3"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "stream": false,
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a friendly assistant. Respond warmly to greetings."
+            },
+            {
+              "role": "user",
+              "content": "Hello!"
+            }
+          ],
+          "tools": []
+        }
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Length": "729",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 15 Jan 2026 20:03:24 GMT"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "created_at": "2026-01-15T20:03:24.438779Z",
+          "message": {
+            "role": "assistant",
+            "content": "Hello! 😊 How can I help you today?",
+            "thinking": "Okay, the user said \"Hello!\" so I need to respond warmly. Let me think about how to phrase it. I should be friendly and use a smiley to keep it warm. Maybe say something like \"Hello! 😊 How can I help you today?\" That sounds good. Let me check if there's anything else. The user just said hello, so no need for more details. Keep it simple and positive. Yeah, that should work.\n"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 3909435750,
+          "load_duration": 77347917,
+          "prompt_eval_count": 28,
+          "prompt_eval_duration": 657348125,
+          "eval_count": 106,
+          "eval_duration": 3156724630
+        }
+      },
+      "latency_ms": 3914,
+      "tokens_in": 28,
+      "tokens_out": 106
+    },
+    {
+      "id": "1768507411011526000",
+      "timestamp": "2026-01-15T17:03:31.011538-03:00",
+      "provider": "custom",
+      "endpoint": "/api/chat",
+      "model": "qwen3:4b",
+      "request": {
+        "method": "POST",
+        "path": "/api/chat",
+        "headers": {
+          "Accept": "application/json",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "214",
+          "Content-Type": "application/json",
+          "User-Agent": "ollama-python/0.6.1 (arm64 darwin) Python/3.13.3"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "stream": false,
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a friendly assistant. Respond warmly to greetings."
+            },
+            {
+              "role": "user",
+              "content": "What is 2+2? Just give me the number."
+            }
+          ],
+          "tools": []
+        }
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Length": "1209",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 15 Jan 2026 20:03:31 GMT"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "created_at": "2026-01-15T20:03:31.011103Z",
+          "message": {
+            "role": "assistant",
+            "content": "4",
+            "thinking": "Okay, the user asked \"What is 2+2? Just give me the number.\" They want a straightforward answer without any extra fluff. \n\nHmm, this is super simple but I should be careful. They specifically said \"just give me the number\" so I shouldn't add anything like explanations or emojis. \n\nLet me think... 2 plus 2 is definitely 4. No tricks here. \n\nThe user seems to be testing if I follow instructions precisely - they even said \"just give me the number\" so I'll strictly comply. \n\nI wonder why they asked such a basic math question... Maybe they're checking if the AI is responsive? Or just being playful? Either way, I'll keep it ultra-simple as requested. \n\n*Prepares response*: Just the number 4. No words, no punctuation, exactly what they asked for. \n\n...Though part of me wants to add \"4\" with a smiley, but nope - they said \"just the number\". Strict compliance mode activated.\n"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 6562045958,
+          "load_duration": 54763792,
+          "prompt_eval_count": 39,
+          "prompt_eval_duration": 98418416,
+          "eval_count": 213,
+          "eval_duration": 6377737327
+        }
+      },
+      "latency_ms": 6562,
+      "tokens_in": 39,
+      "tokens_out": 213
+    },
+    {
+      "id": "1768507418667224000",
+      "timestamp": "2026-01-15T17:03:38.667228-03:00",
+      "provider": "custom",
+      "endpoint": "/api/chat",
+      "model": "qwen3:4b",
+      "request": {
+        "method": "POST",
+        "path": "/api/chat",
+        "headers": {
+          "Accept": "application/json",
+          "Accept-Encoding": "gzip, deflate",
+          "Connection": "keep-alive",
+          "Content-Length": "186",
+          "Content-Type": "application/json",
+          "User-Agent": "ollama-python/0.6.1 (arm64 darwin) Python/3.13.3"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "stream": false,
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a friendly assistant. Respond warmly to greetings."
+            },
+            {
+              "role": "user",
+              "content": "Hi there!"
+            }
+          ],
+          "tools": []
+        }
+      },
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Content-Length": "1389",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Thu, 15 Jan 2026 20:03:38 GMT"
+        },
+        "body": {
+          "model": "qwen3:4b",
+          "created_at": "2026-01-15T20:03:38.666975Z",
+          "message": {
+            "role": "assistant",
+            "content": "Hello! 😊 How can I help you today?",
+            "thinking": "Okay, the user said \"Hi there!\" which is a friendly greeting. I need to respond warmly as a friendly assistant. Let me think about how to phrase it.\n\nFirst, I should acknowledge their greeting with a positive and welcoming tone. Maybe add a smiley emoji to keep it friendly. Also, I can offer help to make it more engaging. Let me check if there's any specific context needed, but since they just greeted, it's probably a simple response.\n\nI should avoid being too formal. Maybe something like: \"Hello! 👋 I'm here to help with anything you need—whether it's answering questions, solving problems, or just chatting! How can I assist you today?\"\n\nWait, but the user might not need help yet, so it's good to be open-ended. Let me make sure it's warm and not too long. Maybe shorten it a bit. How about: \"Hello! 😊 How can I help you today?\"\n\nYes, that's friendly and concise. Adding a smiley makes it warmer. I think that's a good response. Let me confirm it's not too robotic. Yep, it's friendly and open. I'll go with that.\n"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 7652193750,
+          "load_duration": 46019625,
+          "prompt_eval_count": 29,
+          "prompt_eval_duration": 100417000,
+          "eval_count": 255,
+          "eval_duration": 7470654298
+        }
+      },
+      "latency_ms": 7652,
+      "tokens_in": 29,
+      "tokens_out": 255
+    }
+  ],
+  "summary": {
+    "total_calls": 3,
+    "total_tokens_in": 96,
+    "total_tokens_out": 574,
+    "total_latency_ms": 18128,
+    "by_provider": {
+      "custom": 3
+    },
+    "by_model": {
+      "qwen3:4b": 3
+    },
+    "tools_called": []
+  }
+}

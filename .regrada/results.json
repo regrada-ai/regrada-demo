@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-01-15T23:45:35.081745-03:00",
+  "test_suite": "Example Test Suite",
+  "total_tests": 4,
+  "passed": 4,
+  "failed": 0,
+  "regressions": 0,
+  "test_results": [
+    {
+      "name": "trace_1_custom_chat",
+      "status": "passed",
+      "duration_ms": 0,
+      "checks": [
+        {
+          "check": "no_tool_called",
+          "passed": true,
+          "message": "No tools were called"
+        },
+        {
+          "check": "contains: Hello",
+          "passed": true,
+          "message": "Response contains 'Hello'"
+        },
+        {
+          "check": "similarity: {\"method\":\"cosine\",\"text\":\"Hello! How can I assist you today?\",\"threshold\":0.7}",
+          "passed": true,
+          "message": "Cosine similarity 0.7127 meets threshold 0.7000"
+        }
+      ]
+    },
+    {
+      "name": "trace_2_custom_chat",
+      "status": "passed",
+      "duration_ms": 0,
+      "checks": [
+        {
+          "check": "exact: 4",
+          "passed": true,
+          "message": "Response exactly matches expected text"
+        }
+      ]
+    },
+    {
+      "name": "trace_3_custom_chat",
+      "status": "passed",
+      "duration_ms": 0,
+      "checks": [
+        {
+          "check": "no_tool_called",
+          "passed": true,
+          "message": "No tools were called"
+        },
+        {
+          "check": "similarity: {\"method\":\"levenshtein\",\"text\":\"hello\",\"threshold\":50}",
+          "passed": true,
+          "message": "Levenshtein distance 33 within threshold 50"
+        }
+      ]
+    },
+    {
+      "name": "trace_4_custom_chat",
+      "status": "passed",
+      "duration_ms": 0,
+      "checks": [
+        {
+          "check": "tool_called: get_weather",
+          "passed": true,
+          "message": "Tool 'get_weather' was called"
+        },
+        {
+          "check": "tool_args_contains",
+          "passed": true,
+          "message": "Tool 'get_weather' arguments contain: city=tokyo"
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "baseline_date": "0001-01-01T00:00:00Z",
+    "added_tests": [
+      "trace_1_custom_chat",
+      "trace_2_custom_chat",
+      "trace_3_custom_chat",
+      "trace_4_custom_chat"
+    ]
+  }
+}
