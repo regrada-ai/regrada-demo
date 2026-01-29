@@ -74,3 +74,11 @@ Edit `evals/tests.yaml` and remove the `INTENTIONAL_FAIL` check:
 ```
 
 Then the PR will show all tests passing!
+
+## License
+
+This project is proprietary software licensed under the Regrada
+proprietary license. All rights reserved.
+
+No use, reproduction, modification, or distribution is permitted
+without explicit authorization.
